@@ -21,7 +21,7 @@ Usage
 
 ### added a special 2 metas (hostname and context)
 	logger.info('new user registered: %s', 'arunoda');
-	//output == 5 Jun 08:18:14 - info: new user registered: arunoda context=amps,host=arunoda-laptop
+	//output == 5 Jun 08:18:14 - info: new user registered: arunoda context=sample,host=arunoda-laptop
 
 Test
 =====
