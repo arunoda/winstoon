@@ -6,6 +6,10 @@ which provides few functionalities which winston does not offer
 * create loggers by giving a name (which attached as a metaTag)
 * host meta tag also added
 
+Install
+=======
+	npm install winstoon
+
 Usage
 =====
 	var winston = require('winston');
