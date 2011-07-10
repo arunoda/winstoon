@@ -1,6 +1,6 @@
 {
     "name": "winstoon",
-    "version": "0.1.1beta",
+    "version": "0.1.2beta",
     "directories": {
         "lib": "./lib"
     },

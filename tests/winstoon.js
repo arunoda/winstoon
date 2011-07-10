@@ -25,13 +25,13 @@
  */
 
 var winstoon = require('winstoon');
-var winston = require('winston');
+winstoon.add(winstoon.transports.Console);
 
 exports.testSprintfOnly = function(test) {
-	var logger_ = new (winston.Logger)( { transports: [ new (winston.transports.Console)()] });
-	var logger = winstoon.createLogger('a', logger_);
 
-	logger_.on('log', function(transport, level, msg, meta) {
+	var logger = winstoon.createLogger('a');
+
+	logger.on('log', function(transport, level, msg, meta) {
 		test.equal('info', level);
 		test.equal(msg, 'hello dude: 100');
 	})
@@ -43,10 +43,9 @@ exports.testSprintfOnly = function(test) {
 
 exports.testMessageOnly = function(test) {
 	
-	var logger_ = new (winston.Logger)( { transports: [ new (winston.transports.Console)()] });
-	var logger = winstoon.createLogger('a', logger_);
+	var logger = winstoon.createLogger('a');
 		
-	logger_.on('log', function(transport, level, msg, meta) {
+	logger.on('log', function(transport, level, msg, meta) {
 		test.equal('info', level);
 		test.equal(msg, 'hello dude');
 	})
@@ -57,10 +56,10 @@ exports.testMessageOnly = function(test) {
 };
 
 exports.testMetaOnly = function(test) {
-	var logger_ = new (winston.Logger)( { transports: [ new (winston.transports.Console)()] });
-	var logger = winstoon.createLogger('a', logger_);
+
+	var logger = winstoon.createLogger('a');
 		
-	logger_.on('log', function(transport, level, msg, meta) {
+	logger.on('log', function(transport, level, msg, meta) {
 		test.equal('info', level);
 		test.equal(msg, 'hello dude');
 		console.log(meta);
@@ -74,10 +73,10 @@ exports.testMetaOnly = function(test) {
 
 
 exports.testLengthySprintf = function(test) {
-	var logger_ = new (winston.Logger)( { transports: [ new (winston.transports.Console)()] });
-	var logger = winstoon.createLogger('a', logger_);
 
-	logger_.on('log', function(transport, level, msg, meta) {
+	var logger = winstoon.createLogger('a');
+
+	logger.on('log', function(transport, level, msg, meta) {
 		test.equal('info', level);
 		test.equal(msg, 'hello dude: arunoda susiripala. age: 23');
 	})
@@ -88,10 +87,10 @@ exports.testLengthySprintf = function(test) {
 };
 
 exports.testLengthySprintfAAndTags = function(test) {
-	var logger_ = new (winston.Logger)( { transports: [ new (winston.transports.Console)()] });
-	var logger = winstoon.createLogger('a', logger_);
+	
+	var logger = winstoon.createLogger('a');
 
-	logger_.on('log', function(transport, level, msg, meta) {
+	logger.on('log', function(transport, level, msg, meta) {
 		test.equal('info', level);
 		test.equal(msg, 'hello dude: arunoda susiripala. age: 23');
 		test.equal(meta.tag, 'hi');
@@ -103,8 +102,8 @@ exports.testLengthySprintfAAndTags = function(test) {
 };
 
 exports.testNoArgs = function(test) {
-	var logger_ = new (winston.Logger)( { transports: [ new (winston.transports.Console)()] });
-	var logger = winstoon.createLogger('a', logger_);
+	
+	var logger = winstoon.createLogger('a');
 
 	test.throws(function() {
 		logger.info();
@@ -114,8 +113,8 @@ exports.testNoArgs = function(test) {
 };
 
 exports.testLessArgsForSprintf = function(test) {
-	var logger_ = new (winston.Logger)( { transports: [ new (winston.transports.Console)()] });
-	var logger = winstoon.createLogger('a', logger_);
+	
+	var logger = winstoon.createLogger('a');
 
 	test.throws(function() {
 		logger.info('hello dude: %s %s. age: %d', 'ar', 'su');
@@ -137,10 +136,9 @@ exports.testNormal = function(test) {
 exports.testAdditionalMeta = function(test) {
 	
 	test.expect(4);
-	var logger_ = new (winston.Logger)( { transports: [ new (winston.transports.Console)()] });
-	var logger = winstoon.createLogger('amps', logger_);
+	var logger = winstoon.createLogger('amps');
 
-	logger_.on('log', function(transport, level, msg, meta) {
+	logger.on('log', function(transport, level, msg, meta) {
 		test.equal('info', level);
 		test.equal(msg, 'hello dude: arunoda susiripala. age: 23');
 		test.equal(meta.host, require('os').hostname());
@@ -148,6 +146,25 @@ exports.testAdditionalMeta = function(test) {
 	})
 
 	logger.info('hello dude: %s %s. age: %d', 'arunoda', 'susiripala', 23);
+
+	test.done();
+}
+
+exports.testLogRootLevel = function(test) {
+	
+	test.expect(4);
+	var logger = winstoon.createLogger('amps');
+	winstoon.setRootLevel('info');
+
+	logger.on('log', function(transport, level, msg, meta) {
+		test.equal('info', level);
+		test.equal(msg, 'hello dude: arunoda susiripala. age: 23');
+		test.equal(meta.host, require('os').hostname());
+		test.equal(meta.context, 'amps');
+	})
+
+	logger.info('hello dude: %s %s. age: %d', 'arunoda', 'susiripala', 23);
+	logger.debug('this should not exists');
 
 	test.done();
 }
