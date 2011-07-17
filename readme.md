@@ -37,6 +37,7 @@ You can choose your root log level as follows
 	winstoon.setRootLevel('debug'); //only show logs levels higher than info
 
 log level priorities can be found here
+
 * fatal
 * error
 * info
