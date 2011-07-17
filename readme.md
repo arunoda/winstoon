@@ -40,6 +40,7 @@ log level priorities can be found here
 
 * fatal
 * error
+* warn
 * info
 * debug
 * log
