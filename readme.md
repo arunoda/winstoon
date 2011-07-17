@@ -17,7 +17,9 @@ Usage
 	var logger = require('winstoon').createLogger('sample', winston);
 ### Add transports
 This needs to done at once on your source and applies to all
+
 	winstoon.add(winstoon.transports.Console);
+
 #### Other transports available
 winstoon inherits all the tranports available at [winston](https://github.com/indexzero/winston)
 
@@ -31,7 +33,9 @@ winstoon inherits all the tranports available at [winston](https://github.com/in
 ### set root log level
 It's very important to switch from the different log levels at different stage of the application.
 You can choose your root log level as follows
+
 	winstoon.setRootLevel('debug'); //only show logs levels higher than info
+
 log level priorities can be found here
 * fatal
 * error
