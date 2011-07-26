@@ -13,8 +13,8 @@ Install
 
 Usage
 =====
-	var winston = require('winston');
-	var logger = require('winstoon').createLogger('sample', winston);
+	var winstoon = require('winstoon');
+	var logger = winstoon.createLogger('logger-name');
 ### Add transports
 This needs to done at once on your source and applies to all
 
