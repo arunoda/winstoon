@@ -135,13 +135,12 @@ exports.testNormal = function(test) {
 
 exports.testAdditionalMeta = function(test) {
 	
-	test.expect(4);
+	test.expect(3);
 	var logger = winstoon.createLogger('amps');
 
 	logger.on('log', function(transport, level, msg, meta) {
 		test.equal('info', level);
 		test.equal(msg, 'hello dude: arunoda susiripala. age: 23');
-		test.equal(meta.host, require('os').hostname());
 		test.equal(meta.context, 'amps');
 	})
 
@@ -152,14 +151,13 @@ exports.testAdditionalMeta = function(test) {
 
 exports.testLogRootLevel = function(test) {
 	
-	test.expect(4);
+	test.expect(3);
 	var logger = winstoon.createLogger('amps');
 	winstoon.setRootLevel('info');
 
 	logger.on('log', function(transport, level, msg, meta) {
 		test.equal('info', level);
 		test.equal(msg, 'hello dude: arunoda susiripala. age: 23');
-		test.equal(meta.host, require('os').hostname());
 		test.equal(meta.context, 'amps');
 	})
 
