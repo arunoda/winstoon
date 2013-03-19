@@ -1,4 +1,4 @@
-winstoon
+winstoon [![Build Status](https://travis-ci.org/arunoda/winstoon.png)](https://travis-ci.org/arunoda/winstoon)
 ========
 
 ### Very Simple Wrapper Over winston logger
