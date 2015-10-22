@@ -1,31 +1,30 @@
 {
-    "name": "winstoon",
-    "version": "0.2.1",
-    "directories": {
-        "lib": "./lib"
-    },
-    "main": "./lib/winstoon",
-    "description": "Simple Wrapper for Winston Logger",
-    "author": "Arunoda Susiripala <arunoda.susiripala@gmail.com>",
-    "homepage": "https://github.com/arunoda/winstoon",
-    "licenses": [
-        {
-            "type": "The MIT License",
-            "url": "http://www.opensource.org/licenses/mit-license.php"
-        }
-    ],
-    "dependencies": {
-        "winston": "0.6.x"
-    },
-    "devDependencies": {
-        "mocha": "1.8.x"
-    },
-    "scripts": {
-        "test": "node test/index.js"
-    },
-    "repository" :
+  "name": "winstoon",
+  "version": "0.2.1",
+  "directories": {
+    "lib": "./lib"
+  },
+  "main": "./lib/winstoon",
+  "description": "Simple Wrapper for Winston Logger",
+  "author": "Arunoda Susiripala <arunoda.susiripala@gmail.com>",
+  "homepage": "https://github.com/arunoda/winstoon",
+  "licenses": [
     {
-        "type" : "git",
-        "url" : "git@github.com:arunoda/winstoon"
+      "type": "The MIT License",
+      "url": "http://www.opensource.org/licenses/mit-license.php"
     }
+  ],
+  "dependencies": {
+    "winston": "^1.1.1"
+  },
+  "devDependencies": {
+    "mocha": "1.8.x"
+  },
+  "scripts": {
+    "test": "node test/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:arunoda/winstoon"
+  }
 }
